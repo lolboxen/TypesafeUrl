@@ -33,7 +33,7 @@ namespace com.lolboxen.TypesafeUrl
                 for (int i = 0; i < methodArgs.Length; i++)
                 {
                     var param = methodArgs.ElementAt(i);
-                    routeValues.Add(param.Name, callExpression.Arguments[i].ToString());
+                    routeValues.Add(param.Name, Expression.Lambda(callExpression.Arguments[i]).Compile().DynamicInvoke().ToString());
                 }
             }
 
